@@ -109,7 +109,7 @@ Bundle 'git://git.wincent.com/command-t.git'
 Plugin 'The-NERD-tree'
 Plugin 'vcscommand.vim'
 Plugin 'AutoComplPop'
-
+Plugin 'Syntastic'
 
 "Syntastic
 execute pathogen#infect()
