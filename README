@@ -1,10 +1,12 @@
 1. Install git
   yum -y install git
-
+  git config --global http.sslVerify false
+  
 ********* if you have some problem with git command, try this **************************
   sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
   sudo yum install git-core
 **************************************************************************************** 
+
 
 2. git clone
   cd ~
