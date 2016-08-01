@@ -13,6 +13,9 @@ set tags=/sniper/web-admin/tags
 "if filereadable("/root/src/cscope.out")
 "cs add /root/src/cscope.out
 "endif
+if filereadable("./cscope.out")
+cs add cscope.out
+endif
 
 " etc
 set nu
@@ -92,24 +95,22 @@ nmap <S-E><S-E> :e!<CR>
 
 
 
-
-
-"ctags
-set tags=/sniper/tags
-"set tags+=/sniper/web-admin/tags
-
 "vundle
 filetype off
 set rtp+=~/.vim/bundle/vundle
  
 call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'git://git.wincent.com/command-t.git'
 
+Bundle 'gmarik/vundle'
 Plugin 'The-NERD-tree'
 Plugin 'vcscommand.vim'
 Plugin 'AutoComplPop'
 Plugin 'Syntastic'
+Plugin 'ctrlp.vim' 
+
+call vundle#end()
+filetype plugin indent on
+
 
 "Syntastic
 execute pathogen#infect()
@@ -126,8 +127,5 @@ let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 
 "AutoComplPop
 let g:acp_enableAtStartup = 1
-
-
-filetype plugin indent on
 
 
