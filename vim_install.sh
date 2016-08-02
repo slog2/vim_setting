@@ -2,8 +2,11 @@
 ##########################################
 # vim_install.sh
 # - vim version : 7.4 
-# - It takse over 5 minutes ..
+# - It takes over 5 minutes ..
 ##########################################
+
+#VIM_VERSION=$(vim --version | head -1 | grep -o '[0-9]\.[0-9]')
+
 
 yum -y groupinstall 'Development tools'
 yum -y install ncurses ncurses-devel wget git
@@ -19,3 +22,5 @@ make && make install
 
 vim --version
 
+# install all the plugins specified in .vimrc by vundle again 
+vim +PluginInstall +qall
