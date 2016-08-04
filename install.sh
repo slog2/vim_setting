@@ -15,7 +15,7 @@ git config --global http.sslVerify false
 # check vim version 
 VIM_VERSION=$(vim --version | head -1 | grep -o '[0-9]\.[0-9]')
 if [ $(echo "$VIM_VERSION < 7.4" | bc -l) == 1 ]; then
-	read -p "Installed vim version is $VIM_VERSION... Do you want to install vim 7.4? " yn
+	read -p "Installed vim version is $VIM_VERSION ... Do you want to install vim 7.4? " yn
 	case $yn in 
 		[Yy]* ) ./vim_install.sh; break;;
 		* ) echo 'bye.'; exit;;
@@ -23,12 +23,12 @@ if [ $(echo "$VIM_VERSION < 7.4" | bc -l) == 1 ]; then
 fi
 
 # backup
-\cp -if --backup=t  ~/.vimrc   ~/.vimrc.bak
-\cp -irf --backup=t ~/.vim   ~/.vim_bak
+cp -f --backup=t  ~/.vimrc   ~/.vimrc.bak
 
-# copy .vimrc and .vim directory
+# copy .vimrc and .vim directories
 cp .vimrc ~/
-cp -r .vim ~/ 
+cp -r .vim/autoload ~/.vim/
+cp -r .vim/colors ~/.vim/
 
 # install vim vundle plugin 
 if [ ! -d ~/.vim/bundle/vundle/ ]; then
@@ -36,5 +36,5 @@ if [ ! -d ~/.vim/bundle/vundle/ ]; then
 	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
 fi 
 
-# install all the plugins specified in .vimrc by vundle 
+# install the plugins specified in .vimrc by Vundle 
 vim +PluginInstall +qall
