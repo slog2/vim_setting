@@ -1,12 +1,17 @@
 #!/bin/sh
 ##########################################
 # vim_install.sh
-# - vim version : 7.4 
+#
+# - Install VIM 7.4. 
 # - It takes over 5 minutes ..
 ##########################################
 
-#VIM_VERSION=$(vim --version | head -1 | grep -o '[0-9]\.[0-9]')
+VIM_VERSION=$(vim --version | head -1 | grep -o '[0-9]\.[0-9]')
 
+if [ $(echo "$VIM_VERSION >= 7.4" | bc -l) == 1 ]; then
+	echo "Warning: Vim $VIM_VERSION already installed."
+	exit;
+fi
 
 yum -y groupinstall 'Development tools'
 yum -y install ncurses ncurses-devel wget git
@@ -22,5 +27,5 @@ make && make install
 
 vim --version
 
-# install all the plugins specified in .vimrc by vundle again 
+# install the plugins specified in .vimrc by Vundle  
 vim +PluginInstall +qall
