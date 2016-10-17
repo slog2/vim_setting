@@ -9,13 +9,16 @@ set fenc=utf-8
 set fencs=utf-8,euc-kr
 
 " ctags, cscope
-set tags=/sniper/web-admin/tags
+set tags=./tags,../tags,/sniper/web-admin/tags
+
+set csprg=/usr/bin/cscope
+set csto=0
+set cst
+set nocsverb
 "if filereadable("/root/src/cscope.out")
 "cs add /root/src/cscope.out
 "endif
-if filereadable("./cscope.out")
-cs add cscope.out
-endif
+set csverb
 
 " etc
 set nu
@@ -33,6 +36,7 @@ set ai
 set si
 set nostartofline
 set laststatus=2
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set hlsearch
 set incsearch
 set ic
@@ -44,10 +48,8 @@ set ttymouse=xterm2
 set noeol
 set bs=indent,eol,start
 
-set foldmethod=marker
-set foldmarker={{{,}}}
-
 " jaewon
+"set expandtab
 set autoindent
 set tabstop=4
 set shiftwidth=4
@@ -70,7 +72,7 @@ nmap <F10> ma:%!svn blame %<CR>
 imap <F10> <ESC><F10>
 nmap <F11> [i
 imap <F11> <ESC><F11>
-vmap <C-J> :norm i//<CR> 
+vmap <C-J> :norm i//<CR>
 vmap <C-K> :norm 0xx<CR>
 nmap <C-L> :%s/\s*$//<CR>
 imap <C-L> <ESC><C-L>
@@ -82,8 +84,6 @@ map <F3> :!/sniper/php/bin/php -d display_errors=1 % <CR>
 nmap <S-Z><S-Z> :wq<CR>
 nmap <S-Z><S-X> :q<CR>
 nmap <S-E><S-E> :e!<CR>
-
-
 
 " highlight DoubleClick
 "nmap <2-LeftMouse> *#
@@ -100,7 +100,6 @@ filetype off
 set rtp+=~/.vim/bundle/vundle
  
 call vundle#rc()
-
 Bundle 'gmarik/vundle'
 Plugin 'The-NERD-tree'
 Plugin 'vcscommand.vim'
@@ -110,7 +109,6 @@ Plugin 'ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on
-
 
 "Syntastic
 execute pathogen#infect()
@@ -123,9 +121,16 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_quiet_messages = { "level": "warnings" }
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_include_dirs = ['/sniper/include', '../util', '../scanner', '/sniper/mysql/include/mysql/', '/sniper/BerkeleyDB.4.8/include/', '/sniper/pcre/include/']
+"" if mcscreen 2.x version, use this
+"let g:syntastic_cpp_include_dirs = ['/sniper/include', '../util', '../scanner', '/sniper/mysql/include', '/sniper/BerkeleyDB.3.3/include/', '/sniper/pcre-6.6/include/']
+let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_cpp_auto_refresh_includes = 1
 
 "AutoComplPop
 let g:acp_enableAtStartup = 1
-
 
