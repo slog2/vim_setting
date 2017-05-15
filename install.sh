@@ -25,9 +25,12 @@ fi
 # backup
 \cp -f --backup=t  ~/.vimrc   ~/.vimrc.bak
 
+# install pathogen.vim (from https://github.com/tpope/vim-pathogen)
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
 # copy .vimrc and .vim directories
 cp .vimrc ~/
-cp -r .vim/autoload ~/.vim/
 cp -r .vim/colors ~/.vim/
 
 # install vim vundle plugin 

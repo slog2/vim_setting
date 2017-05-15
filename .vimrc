@@ -18,6 +18,9 @@ set nocsverb
 "if filereadable("/root/src/cscope.out")
 "cs add /root/src/cscope.out
 "endif
+if filereadable("./cscope.out")
+	cs add cscope.out
+endif
 set csverb
 
 " etc
@@ -81,9 +84,7 @@ map <C-]> g<C-]>
 
 " jaewon
 map <F3> :!/sniper/php/bin/php -d display_errors=1 % <CR>
-nmap <S-Z><S-Z> :wq<CR>
-nmap <S-Z><S-X> :q<CR>
-nmap <S-E><S-E> :e!<CR>
+map <F4> :%s/\s\+$//e <CR>
 
 " highlight DoubleClick
 "nmap <2-LeftMouse> *#
@@ -125,7 +126,7 @@ let g:syntastic_quiet_messages = { "level": "warnings" }
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 
 let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_include_dirs = ['/sniper/include', '../util', '../scanner', '/sniper/mysql/include/mysql/', '/sniper/BerkeleyDB.4.8/include/', '/sniper/pcre/include/']
+let g:syntastic_cpp_include_dirs = ['/sniper/include', '../util', '../scanner', '/sniper/mysql/include/mysql/', '/sniper/BerkeleyDB.4.8/include/', '/sniper/pcre/include/', '/sniper/ssl/include/openssl/']
 "" if mcscreen 2.x version, use this
 "let g:syntastic_cpp_include_dirs = ['/sniper/include', '../util', '../scanner', '/sniper/mysql/include', '/sniper/BerkeleyDB.3.3/include/', '/sniper/pcre-6.6/include/']
 let g:syntastic_cpp_remove_include_errors = 1
