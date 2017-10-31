@@ -7,7 +7,7 @@ this is slog2's vim setting script
 cd ~
 git clone https://github.com/slog2/vim_setting.git
 cd ~/vim_setting
-./install.sh
+sh install.sh
 ```
 
 
