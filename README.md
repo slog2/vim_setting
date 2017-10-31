@@ -1,7 +1,7 @@
-#vim setting
+# vim setting
 this is slog2's vim setting script
 
-##Usage
+## Usage
 
 ```bash
 cd ~
