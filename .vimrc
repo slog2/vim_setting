@@ -64,10 +64,13 @@ filetype on
 " map
 nnoremap j gj
 nnoremap k gk
+nnoremap <silent> <F12> :bn<CR>
+nnoremap <silent> <S-F12> :bp<CR>
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 nmap <F7> <ESC>O<ESC>I// <ESC>60i=<ESC>o<ESC>IDLOG("(%s) ciaoss target[%s]\n", pt_baseconf->file_id, target);<CR><ESC>I// <ESC>60i=<ESC>k$bbcw
-nmap <F8> <ESC>O<ESC>I// <ESC>60i=<ESC>o<ESC>Iputlog("ciaoss[".__FILE__."(".__LINE__.")] : ".$message);<CR><ESC>I// <ESC>60i=<ESC>k$bbcw
+"nmap <F8> <ESC>O<ESC>I// <ESC>60i=<ESC>o<ESC>Iputlog("ciaoss[".__FILE__."(".__LINE__.")] : ".$message);<CR><ESC>I// <ESC>60i=<ESC>k$bbcw
+nmap <F8> :TagbarToggle<CR>
 nmap <F9> <ESC>O<ESC>I// <ESC>60i=<ESC>o<ESC>Iecho "<pre><xmp>ciaoss : ".print_r($array, 1)."</xmp></pre>";<CR><ESC>Iexit;<CR><ESC>I// <ESC>60i=<ESC>kk04W2bcw
 imap <F8> <ESC><F8>
 imap <F9> <ESC><F9>
@@ -107,6 +110,9 @@ Plugin 'vcscommand.vim'
 Plugin 'AutoComplPop'
 Plugin 'Syntastic'
 Plugin 'ctrlp.vim' 
+Plugin 'joonty/vdebug'
+Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 filetype plugin indent on
@@ -135,3 +141,5 @@ let g:syntastic_cpp_auto_refresh_includes = 1
 "AutoComplPop
 let g:acp_enableAtStartup = 1
 
+"airline
+let g:airline#extensions#tabline#enabled = 1
